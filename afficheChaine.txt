@@ -1,0 +1,21 @@
+org 0x0100;
+
+mov si, hello
+xor bh, bh
+mov ah, 0x03
+int 0x10
+mov cx,1
+affiche_suivant:
+mov al, [si]
+or al, al
+jz fin_affiche_suivant
+mov ah, 0x02
+int 0x10
+mov ah, 0x0A
+int 0x10
+inc si
+inc dl
+jmp affiche_suivant
+fin_affiche_suivant:
+ret
+hello: db 'Bonjour papi.', 0
